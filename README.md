@@ -149,6 +149,6 @@ TumblrTagged::getPosts(String $tag, Array $requestParams = null, Closure $callba
 
 **NOTE**
 
-If you want to work on `localhost`: After once authenticated and redirected to your callback URL, copy all `$_GET` parameters from URL and paste it to local URL. For example: `http://qeremy.com/tumblr?oauth_token=...` to `http://localhost/tumblr?oauth_token=...`.
+If you want to work on `localhost`: After once authenticated and redirected to your callback URL, copy all `$_GET` parameters from URL and paste it to local URL. For example: `http://qeremy.com/tumblr/?oauth_token=...` to `http://localhost/tumblr/test.php?oauth_token=...`.
 
 That's it!
