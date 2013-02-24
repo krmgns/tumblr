@@ -146,3 +146,9 @@ TumblrUser::unlikePost(String $id, String $reblogKey, Closure $callback = null)
 TumblrTagged::__construct(Tumblr $tumblr)
 TumblrTagged::getPosts(String $tag, Array $requestParams = null, Closure $callback = null)
 ```
+
+**NOTE**
+
+If you want to work on `localhost`: After OAuth once authenticated and redirected to your callback URL, copy all `$_GET` parameters from URL and paste it to local URL. For example: `http://qeremy.com/tumblr?oauth_token=...` to `http://localhost/tumblr?oauth_token=...`.
+
+That's it!
