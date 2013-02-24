@@ -12,10 +12,10 @@ Before beginning to HOWTO;
 
 ```php
 // Define your OAuth Consumer Key and Secret Key
-define('CONS_KEY', 'your_tumblr_oauth_consumer_key');
-define('SECR_KEY', 'your_tumblr_secret_key');
+define('TUMBLR_CONS_KEY', 'your_tumblr_oauth_consumer_key');
+define('TUMBLR_SECR_KEY', 'your_tumblr_secret_key');
 
-$tumblr = new Tumblr(CONS_KEY, SECR_KEY);
+$tumblr = new Tumblr(TUMBLR_CONS_KEY, TUMBLR_SECR_KEY);
 // Remember to call this method before requesting OAuth required methods on API/v2
 $tumblr->createOauth();
 ```
