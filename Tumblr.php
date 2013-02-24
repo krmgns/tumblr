@@ -164,7 +164,7 @@ class Tumblr
                 $response['meta']['status'], $response['meta']['msg']);
             // Some requests returns extra info
             if (isset($response['response']['errors'])) {
-                $error .= ', errors: '. $response['response']['errors'];
+                $error .= ', errors: '. join(', ', (array) $response['response']['errors']);
             }
             
             throw new TumblrException($error);

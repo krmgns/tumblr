@@ -42,6 +42,7 @@ print $tumblrBlog->getInfo(function($response) {
 });
 
 /*** Setting Data ***/
+// Add a text post
 $tumblrBlog->addPost('text', array('title' => 'Test', 'body' => 'Lorem ipsum dolor!'));
 // Or
 $tumblrBlog->addPost('text', array(
@@ -53,6 +54,17 @@ $tumblrBlog->addPost('text', array(
             printf('Error: %s', $response['response']['errors']);
         }
     });
+
+// Add a photo post
+$tumblrBlog->addPost('photo', array('source' => 'http://assets.tumblr.com/images/default_avatar_128.gif'));
+// Or
+$tumblrBlog->addPost('photo', array('data' => file_get_contents('avatar1.jpeg')));
+// TODO: But this does not work, interesting... 
+// Even same implementation here: https://github.com/codingjester/tumblr_client
+$tumblrBlog->addPost('photo', array('data' => array(
+    file_get_contents('avatar1.jpeg'),
+    file_get_contents('avatar2.jpeg'),
+)));
 ```
 
 - Using `TumblrUser`
