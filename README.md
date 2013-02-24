@@ -108,7 +108,7 @@ try {
 }
 ```
 
-**METHOD MAP**
+**METHODS MAP**
 
 ```php
 // Tumblr object
