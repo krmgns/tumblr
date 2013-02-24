@@ -4,6 +4,7 @@ Before beginning to HOWTO;
 2- Register an API following this link: http://www.tumblr.com/oauth/apps<br>
 3- Some methods can take special parameters, see all them following this link: http://www.tumblr.com/docs/en/api/v2. For example `Tumblr::getLikes()` could be used like `Tumblr::getLikes(array('limit' => 1, 'offset' => 0))` according to available API/v2 parameters<br>
 4- See all details here http://www.tumblr.com/docs/en/api/v2 about which URI method can take which parameters<br>
+4- The post `ID`s could be very big for 32bit's, use `ID`s remembering this, e.g: `printf('Post added, id: %s', $response['response']['id'])`.<br>
 
 **HOWTO**
 
@@ -15,7 +16,7 @@ define('CONS_KEY', 'your_tumblr_oauth_consumer_key');
 define('SECR_KEY', 'your_tumblr_secret_key');
 
 $tumblr = new Tumblr(CONS_KEY, SECR_KEY);
-// Remember calling this method before requesting OAuth required methods on API/v2
+// Remember to call this method before requesting OAuth required methods on API/v2
 $tumblr->createOauth();
 ```
 
@@ -42,6 +43,16 @@ print $tumblrBlog->getInfo(function($response) {
 
 /*** Setting Data ***/
 $tumblrBlog->addPost('text', array('title' => 'Test', 'body' => 'Lorem ipsum dolor!'));
+// Or
+$tumblrBlog->addPost('text', array(
+    'title' => 'Callback Test', 'body' => 'Lorem ipsum dolor!'
+    ), function($response) {
+        if ($response['meta']['status'] == 201) {
+            printf('Post added, id: %s', $response['response']['id']);
+        } else {
+            printf('Error: %s', $response['response']['errors']);
+        }
+    });
 ```
 
 - Using `TumblrUser`
@@ -72,7 +83,7 @@ $data = $tumblrUser->followBlog('davidslog.com', function($response) use($tumblr
 
 ```php
 $tumblrTagged = new TumblrTagged($tumblr);
-$data = $tumblrTagged->getPosts('php', array('limit'=>1));
+$data = $tumblrTagged->getPosts('php', array('limit' => 1));
 ```
 
 - Extra
@@ -103,7 +114,7 @@ try {
 // Tumblr object
 Tumblr::__construct(String $consKey, String $secrKey)
 Tumblr::createOauth()
-Tumblr::throwResponseErrors(bool $option)
+Tumblr::throwResponseErrors(Boolean $option)
 Tumblr::getApiKey()
 Tumblr::getApiUrl()
 
