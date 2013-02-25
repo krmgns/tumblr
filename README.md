@@ -67,7 +67,7 @@ $data = $tumblrBlog->addPost('photo', array('data' => array(
 )));
 
 // Delete a post
-$data = $tumblrBlog->deletePost('43937593214', function($response) {
+$tumblrBlog->deletePost('43937593214', function($response) {
     if ($response['meta']['status'] == 201) {
         printf('Post deleted, id: %s', $response['response']['id']);
     } else {
