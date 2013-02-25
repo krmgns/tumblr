@@ -166,7 +166,7 @@ class TumblrBlog
      * @throw TumblrException
      */
     public function editPost($id = null, Array $requestParams = array(), Closure $callback = null) {
-        // Only check type, other errors are handled by API
+        // Only check ID, other errors are handled by API
         if ($id) {
             return $this->_request('/post/edit', null, $callback, true, array_merge(
                 array('id' => $id), $requestParams
