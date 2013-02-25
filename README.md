@@ -175,7 +175,7 @@ If you want to work on `localhost`: After once authenticated and redirected to y
 **OPINIONS**
 
 1- URI: `GET /posts`. It takes only one type as param (e.g. `/posts/text` or `/posts?type=text`), so you cannot query for multiple types. Maybe it should be better getting multiple types (e.g. `/posts?type=text,quote,...`). Link: http://www.tumblr.com/docs/en/api/v2#posts<br>
-2- URI: `GET /posts?id=123`. It returns `posts` as `array`. If an `ID` is uniq, so why it returns an array?<br>
+2- URI: `GET /posts?id=123`. It returns `posts` as `array`. If an `ID` is uniq, so why it returns an array such `Object ([response] => Object [posts] => Object([0] => Object([id] => 123, ...)))`? I'm requesting for a uniq resource but getting multiple responses.<br>
 3- Some request responses (e.g. `POST /edit` or `POST /delete`) return like `Object ([meta] => Object([status] => 401 [msg] => Not Authorized)`. If any source is not found or not exists on a REST API then I think it should better returning `404 Not Found` (ref: http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).<br>
 4- I think there is no check out on `reblog` actions for same reblog `ID` (and `reblog_key`). Because, I can re-blog same post even I already did it before. Please stop twice re-blog or more.<br>
 5- I cannot use multiple `ID`s for `/delete` action, why? For this reason, I need to make several requests to delete posts more than one (needless & excessive source consuming both client and server sides...).<br>
