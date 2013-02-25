@@ -4,7 +4,7 @@ Before beginning to HOWTO;
 2- Register an API following this link: http://www.tumblr.com/oauth/apps<br>
 3- Some methods can take special parameters, see all them following this link: http://www.tumblr.com/docs/en/api/v2. For example `Tumblr::getLikes()` could be used like `Tumblr::getLikes(array('limit' => 1, 'offset' => 0))` according to available API/v2 parameters<br>
 4- See all details here http://www.tumblr.com/docs/en/api/v2 about which URI method can take which parameters<br>
-4- The post `ID`s could be very big for 32bit's, use `ID`s remembering this, e.g: `printf('Post added, id: %s', $response['response']['id'])`.<br>
+5- The post `ID`s could be very big for 32bit's, use `ID`s remembering this, e.g: `printf('Post added, id: %s', $response['response']['id'])`.<br>
 
 **HOWTO**
 
@@ -171,5 +171,16 @@ TumblrTagged::getPosts(String $tag, Array $requestParams = null, Closure $callba
 **NOTE**
 
 If you want to work on `localhost`: After once authenticated and redirected to your callback URL, copy all `$_GET` parameters from URL and paste it to local URL. For example: `http://qeremy.com/tumblr/?oauth_token=...` to `http://localhost/tumblr/test.php?oauth_token=...`.
+
+**OPINIONS**
+
+1- URI: `GET /posts`. It takes only one type as param (e.g. `/posts/text` or `/posts?type=text`), so you cannot query for multiple types. Maybe it should be better getting multiple types (e.g. `/posts?type=text,quote,...`). Link: http://www.tumblr.com/docs/en/api/v2#posts<br>
+2- URI: `GET /posts?id=123`. It returns `posts` as `array`. If an `ID` is uniq, so why it returns an array?<br>
+3- Some request responses (e.g. `POST /edit` or `POST /delete`) return like `Object ([meta] => Object([status] => 401 [msg] => Not Authorized)`. If any source is not found or not exists on a REST API then I think it should better returning `404 Not Found` (ref: http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).<br>
+4- I think there is no check out on `reblog` actions for same reblog `ID` (and `reblog_key`). Because, I can re-blog same post even I already did it before. Please stop twice re-blog or more.<br>
+5- I cannot use multiple `ID`s for `/delete` action, why? For this reason, I need to make several requests to delete posts more than one (needless & excessive source consuming both client and server sides...).<br>
+6- After `/edit` action, API returns `200 OK` if success. But `205 Reset Content` sounds more appropriate (ref: http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).<br>
+7- Some responses contain both objects and arrays (e.g. `/posts`). Better deciding on object or array, but only one type please.<br>
+8- `POST /post array('data' => array(readfile('foo.gif')))` okay but `POST /post array('data' => array(readfile('foo.gif'), readfile('bar.gif')))` returns an error `401 Not Authorized`. WTF?<br>
 
 That's it!
