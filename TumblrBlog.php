@@ -140,7 +140,7 @@ class TumblrBlog
      * HTTP Method: POST, Authentication: OAuth, Details: http://www.tumblr.com/docs/en/api/v2#posting
      *
      * @param string $type         (required,default=null)
-     * @param array $requestParams (required,default=null)
+     * @param array $requestParams (required,default=array)
      * @param closure $callback    (default=null)
      * @return array
      * @throw TumblrException
@@ -159,7 +159,7 @@ class TumblrBlog
      * HTTP Method: POST, Authentication: OAuth, Details: http://www.tumblr.com/docs/en/api/v2#editing
      *
      * @param string $id           (required,default=null)
-     * @param array $requestParams (required,default=null)
+     * @param array $requestParams (required,default=array)
      * @param closure $callback    (default=null)
      * @return array
      * @throw TumblrException
