@@ -112,7 +112,7 @@ $data = $tumblrTagged->getPosts('php', array('limit' => 1));
 ```php
 /*** Catch Tumblr errors ***/
 try {
-    // Post ID is required: ... api/v2/posts/?id=123
+    // Post ID is required for TumblrBlog::getPost()
     $response = $tumblrBlog->getPost('');
 } catch (TumblrException $e) {
     print $e->getMessage();
