@@ -65,6 +65,15 @@ $tumblrBlog->addPost('photo', array('data' => array(
     file_get_contents('avatar1.jpeg'),
     file_get_contents('avatar2.jpeg'),
 )));
+
+// Delete a post
+$tumblrBlog->deletePost('43937593214', function($response) {
+    if ($response['meta']['status'] == 201) {
+        printf('Post deleted, id: %s', $response['response']['id']);
+    } else {
+        printf('Error: %s', $response['response']['errors']);
+    }
+});
 ```
 
 - Using `TumblrUser`
