@@ -1,5 +1,5 @@
 {
-    "name": "Tumblr/Tumblr",
+    "name": "qeremy/Tumblr",
     "type": "library",
     "version": "v0.1",
     "homepage": "http://github.com/qeremy/Tumblr",
@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "ext-oauth": "*"
     },
     "autoload": {
         "psr-0": {
