@@ -9,8 +9,5 @@
             "name": "Kerem Gunes",
             "email": "qeremy@gmail.com"
         }
-    ],
-    "require": {
-        "Tumblr": "*"
-    }
+    ]
 }
