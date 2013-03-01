@@ -1,5 +1,6 @@
 {
     "name": "Tumblr",
+    "version": "v0.1",
     "type": "library",
     "description": "A PHP-based wrapper for the Tumblr API/v2.",
     "keywords": ["tumblr", "api", "v2"],
