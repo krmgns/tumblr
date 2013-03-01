@@ -5,7 +5,7 @@
     "homepage": "http://github.com/qeremy/Tumblr",
     "description": "A PHP-based wrapper for the Tumblr API/v2",
     "keywords": ["tumblr", "api", "v2"],
-    "license": "Apache License, Version 2.0",
+    "license": "Apache License 2.0",
     "authors": [
         {
             "name": "Kerem Gunes",
