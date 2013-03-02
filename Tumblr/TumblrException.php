@@ -19,7 +19,7 @@
 /**
  * @class TumblrException v0.1
  * 
- * Thrown an exception.
+ * Throw an exception.
  */
 class TumblrException extends Exception
 {
