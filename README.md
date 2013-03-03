@@ -1,6 +1,6 @@
 Before beginning to HOWTO;
 
-1- Be sure your PHP version >= 5.3.* and "OAuth" extension is already installed<br>
+1- Be sure your PHP version >= 5.3 and "OAuth" extension is already installed<br>
 2- Register an API following this link: http://www.tumblr.com/oauth/apps<br>
 3- Some methods can take special parameters, see all them following this link: http://www.tumblr.com/docs/en/api/v2. For example `Tumblr::getLikes()` could be used like `Tumblr::getLikes(array('limit' => 1, 'offset' => 0))` according to available API/v2 parameters<br>
 4- See all details here http://www.tumblr.com/docs/en/api/v2 about which URI method can take which parameters<br>
