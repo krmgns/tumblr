@@ -33,10 +33,9 @@ class Tumblr
         // Access-token URL
         ACC_URI = 'http://www.tumblr.com/oauth/access_token';
     
-    // Tumblr API/v2 URL
-    protected $_apiUrl = 'http://api.tumblr.com/v2';
-    
-    protected 
+    protected
+        // Tumblr API/v2 URL
+        $_apiUrl = 'http://api.tumblr.com/v2',
         // OAuth Object instance
         $_oauth = null,
         // Tumblr OAuth Consumer Key
