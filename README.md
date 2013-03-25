@@ -142,6 +142,7 @@ Tumblr::getApiUrl()
 // TumblrBlog object
 TumblrBlog::__construct(Tumblr $tumblr, String $baseHostname = null)
 TumblrBlog::setBaseHostname(String $baseHostname)
+TumblrBlog::getBaseHostname()
 TumblrBlog::getInfo(Closure $callback = null)
 TumblrBlog::getLikes(Array $requestParams = null, Closure $callback = null)
 TumblrBlog::getFollowers(Array $requestParams = null, Closure $callback = null)
