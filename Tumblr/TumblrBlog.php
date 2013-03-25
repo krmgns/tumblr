@@ -54,6 +54,15 @@ class TumblrBlog
     }
     
     /**
+     * Get target blog's base-hostname.
+     *
+     * @return string self::_baseHostname
+     */
+    public function getBaseHostname() {
+        return $this->_baseHostname;
+    }
+    
+    /**
      * Retrieve blog info.
      * HTTP Method: GET, Authentication: API key, Details: http://www.tumblr.com/docs/en/api/v2#blog-info
      *
