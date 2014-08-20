@@ -46,7 +46,8 @@ print $tumblrBlog->getInfo(function($response) {
 $data = $tumblrBlog->addPost('text', array('title' => 'Test', 'body' => 'Lorem ipsum dolor!'));
 // Or
 $data = $tumblrBlog->addPost('text', array(
-    'title' => 'Callback Test', 'body' => 'Lorem ipsum dolor!'
+    'title' => 'Callback Test',
+    'body'  => 'Lorem ipsum dolor!'
     ), function($response) {
         if ($response['meta']['status'] == 201) {
             printf('Post added, id: %s', $response['response']['id']);
@@ -59,7 +60,7 @@ $data = $tumblrBlog->addPost('text', array(
 $data = $tumblrBlog->addPost('photo', array('source' => 'http://assets.tumblr.com/images/default_avatar_128.gif'));
 // Or
 $data = $tumblrBlog->addPost('photo', array('data' => file_get_contents('avatar1.jpeg')));
-// TODO: But this does not work, interesting... 
+// TODO: But this does not work, interesting...
 // Even same implementation here: https://github.com/codingjester/tumblr_client
 $data = $tumblrBlog->addPost('photo', array('data' => array(
     file_get_contents('avatar1.jpeg'),
@@ -79,7 +80,7 @@ $tumblrBlog->deletePost('43937593214', function($response) {
 - Using `TumblrUser`
 
 ```php
-// Init 
+// Init
 $tumblrUser = new TumblrUser($tumblr);
 
 /*** Getting Data ***/
