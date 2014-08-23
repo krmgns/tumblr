@@ -17,7 +17,7 @@
  */
 
 /**
- * @class TumblrBlog v0.1
+ * @class TumblrBlog v0.2
  *
  * Provides access to the Tumblr API/v2 "blog" methods. Before using it
  * be sure that you already know all Tumblr API/v2 "blog" methods. See more
@@ -30,7 +30,7 @@ class TumblrBlog
         $_tumblr,
         // Target base-hostname
         $_baseHostname;
-    
+
     /**
      * Initialize a TumblrBlog Object.
      *
@@ -43,7 +43,7 @@ class TumblrBlog
             $this->setBaseHostname($baseHostname);
         }
     }
-    
+
     /**
      * Set target blog's base-hostname.
      *
@@ -52,7 +52,7 @@ class TumblrBlog
     public function setBaseHostname($baseHostname) {
         $this->_baseHostname = $baseHostname;
     }
-    
+
     /**
      * Get target blog's base-hostname.
      *
@@ -61,7 +61,7 @@ class TumblrBlog
     public function getBaseHostname() {
         return $this->_baseHostname;
     }
-    
+
     /**
      * Retrieve blog info.
      * HTTP Method: GET, Authentication: API key, Details: http://www.tumblr.com/docs/en/api/v2#blog-info
@@ -73,7 +73,7 @@ class TumblrBlog
     public function getInfo(Closure $callback = null) {
         return $this->_request('/info', null, $callback, false);
     }
-    
+
     /**
      * Retrieve blog's likes.
      * HTTP Method: GET, Authentication: API key, Details: http://www.tumblr.com/docs/en/api/v2#blog-likes
@@ -86,7 +86,7 @@ class TumblrBlog
     public function getLikes(Array $requestParams = null, Closure $callback = null) {
         return $this->_request('/likes', $requestParams, $callback, false);
     }
-    
+
     /**
      * Retrieve a blog's followers.
      * HTTP Method: GET, Authentication: OAuth, Details: http://www.tumblr.com/docs/en/api/v2#blog-followers
@@ -99,7 +99,7 @@ class TumblrBlog
     public function getFollowers(Array $requestParams = null, Closure $callback = null) {
         return $this->_request('/followers', $requestParams, $callback);
     }
-    
+
     /**
      * Retrieve published posts.
      * HTTP Method: GET, Authentication: API key or OAuth
@@ -127,7 +127,7 @@ class TumblrBlog
         }
         return $this->_request($uri, $requestParams, $callback, $oauth);
     }
-    
+
     /**
      * Retrieve a published post by ID.
      * HTTP Method: GET, Authentication: API key, Details: http://www.tumblr.com/docs/en/api/v2#posts
@@ -143,7 +143,7 @@ class TumblrBlog
         }
         throw new TumblrException('ID is required.');
     }
-    
+
     /**
      * Create a new blog post.
      * HTTP Method: POST, Authentication: OAuth, Details: http://www.tumblr.com/docs/en/api/v2#posting
@@ -163,7 +163,7 @@ class TumblrBlog
         }
         throw new TumblrException('Type is required.');
     }
-    
+
     /**
      * Edit a blog post.
      * HTTP Method: POST, Authentication: OAuth, Details: http://www.tumblr.com/docs/en/api/v2#editing
@@ -183,23 +183,20 @@ class TumblrBlog
         }
         throw new TumblrException('ID is required.');
     }
-    
+
     /**
      * Delete a post.
      * HTTP Method: POST, Authentication: OAuth, Details: http://www.tumblr.com/docs/en/api/v2#deleting-posts
      *
-     * @param string $id           (required,default=null)
+     * @param string $id           (required)
      * @param closure $callback    (default=null)
      * @return array
      * @throw TumblrException
      */
-    public function deletePost($id = null, Closure $callback = null) {
-        if ($id) {
-            return $this->_request('/post/delete', null, $callback, true, array('id' => $id));
-        }
-        throw new TumblrException('ID is required.');
+    public function deletePost($id, Closure $callback = null) {
+        return $this->_request('/post/delete', null, $callback, true, array('id' => $id));
     }
-    
+
     /**
      * Reblog a post.
      * HTTP Method: POST, Authentication: OAuth, Details: http://www.tumblr.com/docs/en/api/v2#reblogging
@@ -219,7 +216,7 @@ class TumblrBlog
         }
         throw new TumblrException('ID and reblog_key is required.');
     }
-    
+
     /**
      * Make an API request.
      *
@@ -234,12 +231,12 @@ class TumblrBlog
     protected function _request($uri, Array $requestParams = null, Closure $callback = null, $oauth = true, Array $postParams = null) {
         $response = $this->_tumblr->request(
             $this->_prepareUri($uri, $requestParams), $oauth, $postParams);
-        
+
         return is_callable($callback)
             ? call_user_func($callback, $response)
             : $response;
     }
-    
+
     /**
      * Prepare request URI.
      *
