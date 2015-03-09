@@ -2,7 +2,7 @@
     "name": "qeremy/tumblr",
     "type": "library",
     "version": "v0.1",
-    "homepage": "http://github.com/qeremy/Tumblr",
+    "homepage": "http://github.com/qeremy/tumblr",
     "description": "A PHP-based wrapper for the Tumblr API/v2",
     "keywords": ["tumblr", "api", "v2"],
     "license": "Apache License 2.0",
